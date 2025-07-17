@@ -1,0 +1,51 @@
+[versions]
+android-compileSdk = "35"
+android-minSdk = "24"
+android-targetSdk = "35"
+agp = "8.9.3"
+kotlin = "2.2.0"
+compose = "1.8.2"
+backhandler = "1.8.2"
+
+# Kmp libraries from AndroidX
+androidx-lifecycle = "2.9.1"
+navigation = "2.9.0-beta01"
+
+androidx-activityCompose = "1.10.1"
+serialization = "1.8.0"
+
+bcv = "0.18.1"
+vannitech = "0.34.0"
+
+[libraries]
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+
+# Kmp libraries from AndroidX
+androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtimeCompose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+compose-navigation = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
+
+ui-backhandler = { group = "org.jetbrains.compose.ui", name = "ui-backhandler", version.ref = "backhandler" }
+
+kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+compose-gradle-plugin = { module = "org.jetbrains.compose:org.jetbrains.compose.gradle.plugin", version.ref = "compose" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+binary-compatibility-validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "bcv" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "vannitech" }
+
+convention-androidTarget = { id = "convention.android.target" }
+convention-iosTarget = { id = "convention.ios.target" }
+convention-multiplatformTarget = { id = "convention.multiplatform.target" }
+convention-applicationEntry = { id = "convention.application.entry" }
+convention-serialization = { id = "convention.serialization" }
+convention-compose = { id = "convention.compose" }
