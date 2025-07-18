@@ -97,29 +97,34 @@ instaNavState.popBackTabStack()
 
 ### 🧱 Scaffold Example
 
-You can embed this into your `Scaffold` and use something like a `BottomBar` to control navigation:
+You can embed this into your `Scaffold` and use something like a `BottomBar` to control navigation.  
+The `LocalInstaNavController` is used to expose the active `NavHostController` to your screens.
 
 ```kotlin
-Scaffold(
-    bottomBar = {
-        BottomBar(
-            currentTab = instaNavState.currentTab,
-            tabs = tabs
-        ) { selectedTab ->
-            instaNavState.navigateTo(selectedTab)
+CompositionLocalProvider(
+    LocalInstaNavController provides tabNavControllers.getValue(instaNavState.currentTab)
+) {
+    Scaffold(
+        bottomBar = {
+            BottomBar(
+                currentTab = instaNavState.currentTab,
+                tabs = tabs
+            ) { selectedTab ->
+                instaNavState.navigateTo(selectedTab)
+            }
         }
-    }
-) { padding ->
-    Box(Modifier.padding(padding)) {
-        InstaNavHost(
-            state = instaNavState,
-            tabs = tabs,
-            tabNavControllers = tabNavControllers
-        ) {
-            composable(ScreenA.route) { ScreenA().context() }
-            composable(ScreenB.route) { ScreenB().context() }
+    ) { padding ->
+        Box(Modifier.padding(padding)) {
+            InstaNavHost(
+                state = instaNavState,
+                tabs = tabs,
+                tabNavControllers = tabNavControllers
+            ) {
+                composable(ScreenA.route) { ScreenA().context() }
+                composable(ScreenB.route) { ScreenB().context() }
 
-            animatableComposable(SubScreenA.route) { SubScreenA().context() }
+                animatableComposable(SubScreenA.route) { SubScreenA().context() }
+            }
         }
     }
 }
