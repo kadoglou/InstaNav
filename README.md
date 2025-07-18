@@ -12,7 +12,9 @@ This behaviour is particularly noticeable on Android, where the back button allo
 
 For those unfamiliar: Instagram’s tab navigation remembers the order in which tabs were visited. When pressing "back", it navigates to the *last visited tab*. Each tab is also kept uniquely in the tab stack — it's never added twice.
 
-Each tab maintains its own back stack, and the user moves between tabs with predictable, intuitive behaviour — just like in the apps we use daily.
+The first tab (home tab) is treated specially: it's reinserted if popped earlier, ensuring the app always exits from the home tab.
+
+This creates a smooth and intuitive experience, where users move across tabs naturally and return to the home screen before the app closes.
 
 ---
 
